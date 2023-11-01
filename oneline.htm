@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- 
+    CSCI 2408 Computer Graphics Fall 2023 
+    (c)2023 by Laman Khudadatzada
+    Submitted in partial fulfillment of the requirements of the course.
+-->
+<html>
+
+<head>
+
+    <!-- LINK OF THE VIDEO PRESENTATION -->
+    <a href="https://www.facebook.com/61553128464007/videos/1980716358988510/?notif_id=1698768906317495&notif_t=video_processed&ref=notif">Link of Video Presentation</a>
+    <title>Homework 1 - Bitmap images</title>
+    <script type="text/javascript" src="oneline.js"></script>
+
+</head>
+
+<!-- CSS CODE -->
+<style>
+    body {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    a {
+        text-decoration: none;
+        color: #032243;
+        border: 2px solid #b62407;
+        padding: 3px 7px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .buttons {
+        padding: 3rem;
+    }
+
+    /* Choosing image button */
+    .file-upload {
+        display: inline-block;
+        width: 10rem;
+        height: 2rem;
+        flex-direction: column;
+        padding-top: 1rem;
+        margin: 10px 20px;
+        text-align: center;
+        background-color: #b62407;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    /* Hiding the file input */
+    #imageInput {
+        display: none;
+    }
+
+    .button-design {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        display: inline-block;
+        font-size: .9rem;
+        width: 8rem;
+        height: 3rem;
+        margin: 10px 20px;
+        background-color: #032243;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+    }
+</style>
+
+<body>
+
+    <!-- I divide it into section in order to make it better with CSS -->
+
+    <!-- Section Buttons -->
+    <div class="buttons">
+
+        <!-- Choosing Image -->
+        <label for="imageInput" class="file-upload">Choose File</label>
+        <input type="file" id="imageInput" accept="image/*">
+
+        <!-- Grayscale -->
+        <button id="grayscale" class="button-design" onclick="applyGrayscale()">Grayscale</button>
+
+        <!-- Reduced Resolution -->
+        <button id="reduced-resolution" class="button-design" onclick="reduceResolution()">Reduce Resolution</button>
+
+        <!-- One Line Spiral -->
+        <button id="spiral" class="button-design" onclick="spiral()">One Line Spiral</button>
+
+        <!-- Input for background color of the spiral -->
+        <input type="color" id="bgColorSpiral" value="#FFFFFF">
+
+        <!-- One Line Curved Spiral -->
+        <button id="curved-spiral" class="button-design" onclick="curvedSpiral()">Curved Spiral</button>
+
+        <!-- Download link -->
+        <a id="downloadLink" onclick="downloadEditedImage()">Download Edited Image</a>
+
+    </div>
+
+    <!-- Main Section -->
+    <div class="main-canvas">
+
+        <canvas id="gl-canvas" width="800" height="600"></canvas>
+
+        <!-- 2ns canvas for reduced resolution -->
+        <br>
+        <canvas id="reducedCanvas" width="800" height="600" style="display:none;"></canvas>
+
+    </div>
+
+</body>
+
+
+</html>
