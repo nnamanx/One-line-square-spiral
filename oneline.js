@@ -317,80 +317,79 @@ class DrawSpiral {
         canvas.style.display = 'block';
     }
 
-
     // Perfect Curved (Circle) Spiral
-    curvedSpiral() {
+    // curvedSpiral() {
 
-        // Checking if there is image data
-        if (!this.editor.imageData) {
-            // If no image data, show an alert and exit the function
-            alert("Please, upload an image first");
-            return;
-        }
+    //     // Checking if there is image data
+    //     if (!this.editor.imageData) {
+    //         // If no image data, show an alert and exit the function
+    //         alert("Please, upload an image first");
+    //         return;
+    //     }
 
-        const canvas = this.editor.canvas;
-        const ctx = canvas.getContext("2d");
+    //     const canvas = this.editor.canvas;
+    //     const ctx = canvas.getContext("2d");
 
-        const bgColor = document.getElementById("bgColorSpiral").value;
+    //     const bgColor = document.getElementById("bgColorSpiral").value;
 
-        // Clearing canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.style.backgroundColor = bgColor;
+    //     // Clearing canvas
+    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //     canvas.style.backgroundColor = bgColor;
 
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
+    //     const centerX = canvas.width / 2;
+    //     const centerY = canvas.height / 2;
 
-        // Number of spirals to draw
-        const numSpirals = 10;
+    //     // Number of spirals to draw
+    //     const numSpirals = 10;
 
-        // Angular step
-        const angleStep = 0.1;
+    //     // Angular step
+    //     const angleStep = 0.1;
 
-        // Radius increment
-        const radiusIncrement = 1;
+    //     // Radius increment
+    //     const radiusIncrement = 1;
 
-        for (let spiral = 1; spiral <= numSpirals; spiral++) {
+    //     for (let spiral = 1; spiral <= numSpirals; spiral++) {
 
-            let radius = 0;
+    //         let radius = 0;
 
-            ctx.beginPath();
+    //         ctx.beginPath();
 
-            for (let angle = 0; angle < Math.PI * 2 * spiral; angle += angleStep) {
+    //         for (let angle = 0; angle < Math.PI * 2 * spiral; angle += angleStep) {
 
-                radius += radiusIncrement;
-                const x = centerX + radius * Math.cos(angle);
-                const y = centerY + radius * Math.sin(angle);
+    //             radius += radiusIncrement;
+    //             const x = centerX + radius * Math.cos(angle);
+    //             const y = centerY + radius * Math.sin(angle);
 
-                // Calculating the pixel index
-                const pixelIndex = (Math.floor(x) + Math.floor(y) * canvas.width) * 4;
+    //             // Calculating the pixel index
+    //             const pixelIndex = (Math.floor(x) + Math.floor(y) * canvas.width) * 4;
 
-                if (pixelIndex < this.editor.imageData.data.length) {
+    //             if (pixelIndex < this.editor.imageData.data.length) {
 
-                    // Taking RGB color components from the image data
-                    const red = this.editor.imageData.data[pixelIndex] / 255;
-                    const blue = this.editor.imageData.data[pixelIndex + 1] / 255;
-                    const green = this.editor.imageData.data[pixelIndex + 2] / 255;
+    //                 // Taking RGB color components from the image data
+    //                 const red = this.editor.imageData.data[pixelIndex] / 255;
+    //                 const blue = this.editor.imageData.data[pixelIndex + 1] / 255;
+    //                 const green = this.editor.imageData.data[pixelIndex + 2] / 255;
 
-                    // Calculating brightness as the sum of RGB components
-                    const brightness = red + blue + green;
+    //                 // Calculating brightness as the sum of RGB components
+    //                 const brightness = red + blue + green;
 
-                    // Calculating line thickness based on brightness
-                    // minimum = 1 and maximum = 5
-                    const thickness = 5 - Math.max(brightness, 1);
+    //                 // Calculating line thickness based on brightness
+    //                 // minimum = 1 and maximum = 5
+    //                 const thickness = 5 - Math.max(brightness, 1);
 
-                    // Setting the line thickness for drawing
-                    ctx.lineWidth = thickness;
+    //                 // Setting the line thickness for drawing
+    //                 ctx.lineWidth = thickness;
 
-                    // Draw a point
-                    ctx.lineTo(x, y);
-                }
-            }
+    //                 // Draw a point
+    //                 ctx.lineTo(x, y);
+    //             }
+    //         }
 
-            ctx.stroke();
-        }
+    //         ctx.stroke();
+    //     }
 
-        // Displaying canvas
-        canvas.style.display = 'block';
-    }
+    //     // Displaying canvas
+    //     canvas.style.display = 'block';
+    // }
 
 }
