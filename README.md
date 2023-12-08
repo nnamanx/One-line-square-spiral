@@ -15,3 +15,41 @@
 [drawing sqaure on canvas](https://dirask.com/posts/JavaScript-draw-square-on-canvas-element-DKL5gp)
 
 [drawing sqaure on canvas](https://stackoverflow.com/questions/49807779/drawing-square-using-canvas-javascript)
+
+## Loading
+
+        var canvas;
+        var ctx;
+        var imageData;
+
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+
+        function loadImage() {
+
+            var input = document.getElementById("image-input");
+            var file = input.files[0];
+
+            if (file) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+
+                    var img = new Image();
+                    img.onload = function () {
+
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    };
+
+                    img.src = e.target.result;
+
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
